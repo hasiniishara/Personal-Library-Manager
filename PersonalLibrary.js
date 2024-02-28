@@ -6,36 +6,47 @@ let library = [];
 function addBook(title, author){
     //push objects to the array
     library.push({ Title:title, Author:author, Readstatus:false });
-    console.log(library);
 }
 
 //This function describes, The book is read.
 function markAsread(title) {
     //Getting index of exact matching item
-    const index = library.findIndex(data => data.Title === title);
-    console.log(index);
-    //Set true value to the read status
-    library[index].Readstatus = true;
-    console.log(library);
+    for (let i=0; i< library.length; i++){
+        if(library[i].Title === title){
+            //Set true value to the read status
+            library[i].Readstatus = true;
+        }
+    }
 }
 
 //This function describes remove of the books
 function removeBook(title){
     //Getting index of exact matching item
-    const index = library.findIndex(data => data.Title === title);
-    console.log(index);
-    //Remove one item from starting index value.
-    library.splice(index,1);
-    console.log(library);
+    for (let i=0; i< library.length; i++){
+        if(library[i].Title === title){
+            //Remove one item from starting index value.
+            library.splice(i,1);
+        }
+    }
 }
 
+//This function describes List of all unread books.
 
 
 
 
+//Create Book List Object
+const bookObj = [
+    {Title: "Harry Potter", Author: "J.K Rowling"},
+    {Title: "A Village by the Sea", Author: "Anita Desai"},
+    {Title: "War and Peace", Author: "Leo Tolstoy"},
+    {Title: "The Tempest", Author: "William Shakespeare"}
+]
 
-//Call addBook Function
-addBook("Mr Loard","James");
-markAsread("Mr Loard");
-removeBook("Mr Loard");
+//Call addBook Function -> Have to add data by each row by row.Using forEach
+bookObj.forEach(data => addBook(data.Title, data.Author));
+console.log(library.length);
+markAsread("Harry Potter");
+console.log(library);
+removeBook("Harry Potter");
 console.log(library);
