@@ -31,9 +31,31 @@ function removeBook(title){
 }
 
 //This function describes List of all unread books.
+function listunread(){
+    //Define variable & assign the exact matcing value in to it.
+    let unreadArr = library.filter(data => !data.Readstatus);
+    console.log(unreadArr);
+}
 
+//This function describes, find the books according to the author.
+function findBooksByAuthor(author){
+    //Define variable & assign the exact matcing value in to it.
+    let book1 = library.filter(data => data.Author === author);
+    console.log(book1);
 
+}
 
+//This function describes, the book is exist or not in the Library.
+function bookExists(title){
+    //Define variable & getting boolean value.
+    const isBookThere = library.some(data => data.Title === title);
+    //Check book is there or not.
+    if(isBookThere) {
+        console.log("The Book is available in the Library");
+    }else{
+        console.log("The Book is currently not available in the Library");
+    }
+}
 
 //Create Book List Object
 const bookObj = [
@@ -45,8 +67,9 @@ const bookObj = [
 
 //Call addBook Function -> Have to add data by each row by row.Using forEach
 bookObj.forEach(data => addBook(data.Title, data.Author));
-console.log(library.length);
 markAsread("Harry Potter");
-console.log(library);
 removeBook("Harry Potter");
-console.log(library);
+listunread();
+findBooksByAuthor("William Shakespeare");
+bookExists("War and Peace");
+
