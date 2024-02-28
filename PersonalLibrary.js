@@ -20,7 +20,14 @@ function markAsread(title) {
 }
 
 //This function describes remove of the books
-
+function removeBook(title){
+    //Getting index of exact matching item
+    const index = library.findIndex(data => data.Title === title);
+    console.log(index);
+    //Remove one item from starting index value.
+    library.splice(index,1);
+    console.log(library);
+}
 
 
 
@@ -30,4 +37,5 @@ function markAsread(title) {
 //Call addBook Function
 addBook("Mr Loard","James");
 markAsread("Mr Loard");
+removeBook("Mr Loard");
 console.log(library);
